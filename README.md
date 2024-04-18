@@ -1,1 +1,1 @@
-my app
+# Django_WeatherApp
