@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block content %}
+    <div class="container-fluid" style="margin-top: 60px; margin-bottom: 100px;">
+        <div class="col-md-offset-4 col-md-4">
+            <h3 class="page-header text-primary text-center"><span class="fas fa-cloud-sun"></span> Django - Weather application</h3>
+
+            {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'error' %}
+                    <div class="alert alert-danger">
+                        {{message}}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% endif %}
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="input-group">
+                    {{form.name}}
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit"><span class="fa fa-add"></span> Add City</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
