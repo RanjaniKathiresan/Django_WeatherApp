@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .form import CityForm
 from .models import City
 import requests
@@ -24,5 +24,22 @@ def home(request):
                 messages.error(request, "City already exists...!!!")
 
     form = CityForm()
-    return render(request, "weatherapp.html", {'form' : form})
+    cities = City.objects.all()
+    data = []
+    for city in cities:
+        res = requests.get(url.format(city)).json()
+        city_weather = {
+            'city' : city,
+            'temperature' : res['main']['temp'],
+            'description' : res['weather'][0]['description'],
+            'country' : res['sys']['country'],
+            'icon' : res['weather'][0]['icon']
+        }
+        data.append(city_weather)
+    context = {'data': data, 'form' : form}
+    return render(request, "weatherapp.html", context)
 
+def delete_city(request, CName):
+    City.objects.get(name = CName).delete()
+    messages.success(request, " " + CName +" Removed successfully...!!!")
+    return redirect('Home')
