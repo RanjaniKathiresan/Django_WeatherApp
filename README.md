@@ -13,5 +13,5 @@ Django: Used for building the backend and handling the frontend rendering
 HTML/CSS: For structuring and styling the web pages
 OpenWeather API: Fetches real-time weather data
 
-## Leranings 
+## Learnings 
    Through this project, I learned how to use Django for frontend development by creating a website with HTML, CSS, and JavaScript. I gained experience in integrating Python code into HTML templates to manage logic-based element display. I also learned about Django’s core components, including models, views, ModelForms, and the folder structure. Additionally, I explored how to configure settings and work with the Django admin panel, as well as how to create and manage models effectively.
